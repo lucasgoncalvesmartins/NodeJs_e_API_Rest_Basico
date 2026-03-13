@@ -8,12 +8,12 @@ const db = new databaseMemory()
 //post utilizado para enviar informações para o servidor, ou seja, para criar informações no servidor
 //resquest body toda vez que utilizo post e puth posso enviar um corpo para requisição
 server.post('/videos',(request, reply) => {
-  const body = request.body
+  const {title, description, url} = request.body
 
     db.create({
-        title: 'Video 1',
-        description: 'descrição do video 1',
-        url: 'https://www.youtube.com/watch?v=video1'
+        title,
+        description,
+        url
     })
 
     console.log(db.list())
