@@ -6,7 +6,10 @@ const server = fastify()
 const db = new databaseMemory()
 
 //post utilizado para enviar informações para o servidor, ou seja, para criar informações no servidor
+//resquest body toda vez que utilizo post e puth posso enviar um corpo para requisição
 server.post('/videos',(request, reply) => {
+  const body = request.body
+
     db.create({
         title: 'Video 1',
         description: 'descrição do video 1',
