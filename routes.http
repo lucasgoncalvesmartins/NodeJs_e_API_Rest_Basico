@@ -1,4 +1,4 @@
-POST https://nodejs-e-api-rest-basico.onrender.com
+POST https://nodejs-e-api-rest-basico.onrender.com/videos
 Content-Type: application/json
  
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 ###
 
 
-GET  https://nodejs-e-api-rest-basico.onrender.com
+GET  https://nodejs-e-api-rest-basico.onrender.com/videos
 
 ###
 
