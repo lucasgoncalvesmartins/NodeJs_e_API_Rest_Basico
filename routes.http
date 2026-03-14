@@ -2,7 +2,7 @@ POST http://localhost:3333/videos
 Content-Type: application/json
  
 {
-    "title": "Video node",
+    "title": "Video teste novo",
     "description": "Descrição do video de node",
     "url": "https://www.youtube.com/watch?v=GQp1zzTwrIg"
 }
