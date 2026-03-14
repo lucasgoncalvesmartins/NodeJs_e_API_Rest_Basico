@@ -50,8 +50,10 @@ server.put('/videos/:id',(request, reply) => {
 })
 
 //delete utilizado para deletar informações no servidor, ou seja, para deletar informações no servidor
-server.delete('/videos/:id',() => {
-    return 'Hello World'
+server.delete('/videos/:id',(request, reply) => {
+    const videoId = request.params.id
+    db.delete(videoId)
+     return reply.status(204).send()
 })
 
 
