@@ -26,13 +26,27 @@ server.post('/videos',(request, reply) => {
 
 //get utilizado para pegar informações do servidor, ou seja, para ler informações do servidor
 server.get('/videos',() => {
-    return 'Hello World'
+    const videos = db.list()
+    return videos
 })
 
 //put utilizado para atualizar informações no servidor, ou seja, para atualizar informações no servidor
 //rout parameters parametro enviado na rota, ou seja, parametro enviado na url
-server.put('/videos/:id',() => {
-    return 'Hello World'
+server.put('/videos/:id',(request, reply) => {
+    const  videoId = request.params.id
+    const {title, description, url} = request.body
+
+    
+    const video = db.update(videoId, {
+        title,
+        description,
+        url,
+    })
+
+    return reply.status(204).send()
+
+     //204 significa que algo foi atualizado com sucesso, porem sem retornar nenhum conteúdo 
+
 })
 
 //delete utilizado para deletar informações no servidor, ou seja, para deletar informações no servidor

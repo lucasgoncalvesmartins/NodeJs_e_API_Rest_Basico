@@ -2,7 +2,24 @@ POST http://localhost:3333/videos
 Content-Type: application/json
  
 {
-    "title": "Video de teste",
+    "title": "Video de teste 1",
     "description": "Descrição do video de teste",
     "url": "https://www.youtube.com/watch?v=GQp1zzTwrIg"
 }
+
+###
+
+
+GET  http://localhost:3333/videos
+
+###
+
+PUT http://localhost:3333/videos/9ae44a8a-1eef-40bd-9276-f9a66e87b781
+Content-Type: application/json
+
+{
+    "title": "Video de teste 1 atualizado",
+    "description": "Descrição do video de teste atualizado",
+    "url": "https://www.youtube.com/watch?v=GQp1zzTwrIg"
+}
+
