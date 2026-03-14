@@ -1,16 +1,16 @@
 import {fastify}  from 'fastify'
-import {databaseMemory} from './database-memory.js'
+import {DatabasePostgres} from './database-postgres.js'
 
 
 const server = fastify()
-const db = new databaseMemory()
+const db = new DatabasePostgres()
 
 //post utilizado para enviar informações para o servidor, ou seja, para criar informações no servidor
 //resquest body toda vez que utilizo post e puth posso enviar um corpo para requisição
-server.post('/videos',(request, reply) => {
+server.post('/videos', async(request, reply) => {
   const {title, description, url} = request.body
 
-    db.create({
+    await db.create({
         title,
         description,
         url
@@ -25,12 +25,12 @@ server.post('/videos',(request, reply) => {
   })
 
 //get utilizado para pegar informações do servidor, ou seja, para ler informações do servidor
-server.get('/videos',(request) => {
+server.get('/videos', async(request) => {
     const search = request.query.source
 
     console.log(search)
     
-    const videos = db.list(search)
+    const videos = await db.list(search)
 
 
     return videos
@@ -38,12 +38,12 @@ server.get('/videos',(request) => {
 
 //put utilizado para atualizar informações no servidor, ou seja, para atualizar informações no servidor
 //rout parameters parametro enviado na rota, ou seja, parametro enviado na url
-server.put('/videos/:id',(request, reply) => {
+server.put('/videos/:id', async(request, reply) => {
     const  videoId = request.params.id
     const {title, description, url} = request.body
 
     
-    const video = db.update(videoId, {
+    const video = await db.update(videoId, {
         title,
         description,
         url,
@@ -56,9 +56,9 @@ server.put('/videos/:id',(request, reply) => {
 })
 
 //delete utilizado para deletar informações no servidor, ou seja, para deletar informações no servidor
-server.delete('/videos/:id',(request, reply) => {
+server.delete('/videos/:id', async(request, reply) => {
     const videoId = request.params.id
-    db.delete(videoId)
+    await db.delete(videoId)
      return reply.status(204).send()
 })
 
