@@ -1,8 +1,8 @@
-POST http://localhost:3333/videos
+POST https://nodejs-e-api-rest-basico.onrender.com
 Content-Type: application/json
  
 {
-    "title": "Video teste novo",
+    "title": "Video teste deploy",
     "description": "Descrição do video de node",
     "url": "https://www.youtube.com/watch?v=GQp1zzTwrIg"
 }
@@ -10,11 +10,11 @@ Content-Type: application/json
 ###
 
 
-GET  http://localhost:3333/videos
+GET  https://nodejs-e-api-rest-basico.onrender.com
 
 ###
 
-PUT http://localhost:3333/videos/9ae44a8a-1eef-40bd-9276-f9a66e87b781
+PUT https://nodejs-e-api-rest-basico.onrender.com
 Content-Type: application/json
 
 {
@@ -25,4 +25,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3333/videos/
+DELETE https://nodejs-e-api-rest-basico.onrender.com

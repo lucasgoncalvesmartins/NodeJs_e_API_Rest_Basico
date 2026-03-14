@@ -12,8 +12,8 @@ const requestHandler = async (req, res) => {
   res.end(version)
 };
 
-http.createServer(requestHandler).listen(3000, () => {
-  console.log('Server running at http://localhost:3000')
+http.createServer(requestHandler).listen(process.env.PORT || 3000, () => {
+  console.log(`Server running at http://localhost:${process.env.PORT || 3000}`)
 });
 
 export default sql
