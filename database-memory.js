@@ -3,15 +3,21 @@ import { randomUUID } from 'node:crypto'
 export class databaseMemory {
     #videos = new Map()
 
-    //set e map utilizado para criar um conjunto de dados, ou seja, para criar um conjunto de dados sem duplicidade
+    //set e map utilizado para criar um conjunto de dados, ou seja, para criar um conjunto de dados sem duplicidades
 
-    list() {
+    list(search) {
         return Array.from(this.#videos.entries()).map((videoArray) => {
            const id = videoArray[0]
            const data = videoArray[1]
            return { id, ...data, }
-        })
+        }).filter(video => {
+            if(search) {
+                return video.title.includes(search)
+                
+            }
+            return true
     }
+)}
 
     create(video) {
         const videoId = randomUUID()

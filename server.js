@@ -25,8 +25,14 @@ server.post('/videos',(request, reply) => {
   })
 
 //get utilizado para pegar informações do servidor, ou seja, para ler informações do servidor
-server.get('/videos',() => {
+server.get('/videos',(request) => {
+    const search = request.query.search
+
+    console.log(search)
+    
     const videos = db.list()
+
+
     return videos
 })
 
