@@ -1,92 +1,61 @@
 # Projeto com Node.js
 
-Este é um projeto simples de API desenvolvido com **Node.js** utilizando o framework **Fastify**.
-O objetivo do projeto é estudar e praticar a criação de APIs REST, implementando operações básicas de CRUD.
+Este é um projeto simples de API desenvolvido com **Node.js** utilizando o framework **Fastify**. O objetivo do projeto é estudar e praticar a criação de APIs REST, implementando operações básicas de CRUD e integração com banco de dados PostgreSQL via Neon.
 
-## Status do Projeto
+## Deploy no Render
 
-Projeto em desenvolvimento.
+A API está configurada para rodar no **Render**. Para que o deploy funcione corretamente, as seguintes configurações são necessárias:
 
-Atualmente a API utiliza um **banco de dados em memória (Map)** apenas para fins de aprendizado e testes.
+### 1. Variáveis de Ambiente
+No painel do Render, adicione as seguintes variáveis em **Environment**:
+
+| Chave | Descrição |
+| :--- | :--- |
+| `PORT` | Definida automaticamente pelo Render (o código usa `process.env.PORT ?? 3333`) |
+| `DATABASE_URL` | URL de conexão do seu banco de dados Neon |
+
+### 2. Configurações de Serviço
+* **Build Command:** `npm install`
+* **Start Command:** `node server.js`
+
+## Rotas da API
+
+Todas as rotas devem ser acessadas utilizando o prefixo `/videos`.
+
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| **POST** | `/videos` | Cria um novo vídeo |
+| **GET** | `/videos` | Lista todos os vídeos (aceita query `?source=termo`) |
+| **PUT** | `/videos/:id` | Atualiza um vídeo existente |
+| **DELETE** | `/videos/:id` | Remove um vídeo por ID |
 
 ## Tecnologias utilizadas
 
-* Node.js
-* Fastify
-* JavaScript (ES Modules)
+* **Node.js**
+* **Fastify**
+* **PostgreSQL (Neon)**
+* **JavaScript (ES Modules)**
 
-## Funcionalidades já implementadas
+## Como executar localmente
 
-A API atualmente possui as seguintes rotas:
+1. Clone o repositório e instale as dependências:
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   cd Projeto_com_NodeJs
+   npm install
+   ```
 
-| Método | Rota          | Descrição             |
-| ------ | ------------- | --------------------- |
-| POST   | `/videos`     | Cria um novo vídeo    |
-| GET    | `/videos`     | Lista todos os vídeos |
-| PUT    | `/videos/:id` | Atualiza um vídeo     |
-| DELETE | `/videos/:id` | Remove um vídeo       |
+2. Configure o arquivo `.env` com sua `DATABASE_URL`.
 
-Os dados são armazenados temporariamente em memória utilizando **Map**, portanto são perdidos ao reiniciar o servidor.
+3. Execute o servidor:
+   ```bash
+   npm run dev # ou node server.js
+   ```
 
-## Como executar o projeto
+## Observação Importante
+Certifique-se de que suas requisições HTTP (via Insomnia, Postman ou `routes.http`) estão apontando para a URL correta:
+* **Local:** `http://localhost:3333/videos`
+* **Produção:** `https://sua-api.onrender.com/videos`
 
-1. Clone o repositório
-
-```
-git clone https://github.com/seu-usuario/seu-repositorio.git
-```
-
-2. Entre na pasta do projeto
-
-```
-cd Projeto_com_NodeJs
-```
-
-3. Instale as dependências
-
-```
-npm install
-```
-
-4. Execute o servidor
-
-```
-npm start
-```
-
-O servidor será iniciado em:
-
-```
-http://localhost:3333
-```
-
-## Exemplos de requisição
-
-Criar vídeo:
-
-```
-POST /videos
-Content-Type: application/json
-
-{
-  "title": "Video de teste",
-  "description": "Descrição do vídeo",
-  "url": "https://youtube.com/..."
-}
-```
-
-## Objetivo do projeto
-
-Este projeto faz parte de um estudo prático para aprender:
-
-* criação de APIs REST
-* uso do Fastify
-* manipulação de rotas HTTP
-* estrutura básica de backend com Node.js
-
-## Próximos passos
-
-* implementar filtros na listagem de vídeos
-* validação de dados
-* integração com banco de dados real
-* melhorar organização do código
+---
+*Este projeto faz parte de um estudo prático de backend e APIs REST.*
