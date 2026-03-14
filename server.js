@@ -26,11 +26,11 @@ server.post('/videos',(request, reply) => {
 
 //get utilizado para pegar informações do servidor, ou seja, para ler informações do servidor
 server.get('/videos',(request) => {
-    const search = request.query.search
+    const search = request.query.source
 
     console.log(search)
     
-    const videos = db.list()
+    const videos = db.list(search)
 
 
     return videos
